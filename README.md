@@ -45,7 +45,34 @@ The booking form posts to `POST /api/quote`. The endpoint safely acknowledges an
 
 ## Deploy
 
-For Vercel, connect the repository, keep the build command as `npm run build`, and use the starter's Node server configuration. For Hostinger, build with `npm run build`, run the production server with `npm start`, and set `PORT` to the host-provided port. The managed project is already configured with server capability and `/api/health`.
+### Vercel (static site + serverless API)
+
+`vercel.json` already contains everything Vercel needs:
+
+- `framework: null` (no framework preset, so Vercel does not look for `dist/index.js`)
+- `buildCommand: npm run build:static` (Vite build → `dist/public`)
+- `outputDirectory: dist/public` (so `/` serves `index.html`, not the server bundle)
+- `rewrites: / (.*) → /index.html` so deep links like `/booking` load the SPA
+  (the filesystem — static assets and `/api/*` functions — always takes precedence)
+
+The `api/` folder holds the Vercel serverless functions (`/api/quote`,
+`/api/health`, `/api/trpc/*`). The Manus OAuth login and the MySQL-backed
+tRPC procedures need the platform environment variables, so they are stubbed
+out on Vercel; the public website does not use them.
+
+In the Vercel dashboard make sure: **Root Directory** = repository root,
+**Build Command** = `npm run build:static`, **Output Directory** = `dist/public`
+(`vercel.json` overrides these anyway, but keeping them in sync avoids
+surprises).
+
+Optional: set `QUOTE_WEBHOOK_URL` in the Vercel environment to forward every
+quote request to a mailbox/Zapier/Make endpoint.
+
+### Hostinger / any Node host
+
+Build with `npm run build`, run the production server with `npm start`, and set
+`PORT` to the host-provided port. The managed project is already configured with
+server capability and `/api/health`.
 
 ## Customize before launch
 
