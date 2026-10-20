@@ -1,0 +1,1 @@
+export default { logoUrl: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=256&q=80" };

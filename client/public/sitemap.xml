@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://cleanslate.example/</loc></url>
+  <url><loc>https://cleanslate.example/about</loc></url>
+  <url><loc>https://cleanslate.example/services</loc></url>
+  <url><loc>https://cleanslate.example/pricing</loc></url>
+  <url><loc>https://cleanslate.example/booking</loc></url>
+  <url><loc>https://cleanslate.example/gallery</loc></url>
+  <url><loc>https://cleanslate.example/reviews</loc></url>
+  <url><loc>https://cleanslate.example/faq</loc></url>
+  <url><loc>https://cleanslate.example/contact</loc></url>
+  <url><loc>https://cleanslate.example/blog</loc></url>
+</urlset>
